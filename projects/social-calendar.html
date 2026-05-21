@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>社交日历 · 案例详情</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#0a0f1e;
+    --accent:#6366f1;
+    --accent2:#818cf8;
+    --text:#f1f5f9;
+    --muted:#94a3b8;
+    --border:#1e2d45;
+    --card:#131c2e;
+  }
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+  a{color:inherit;text-decoration:none}
+
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(10,15,30,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:900px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:60px}
+  .back-btn{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);transition:color .2s}
+  .back-btn:hover{color:var(--text)}
+  .nav-logo{font-size:14px;color:var(--muted)}
+
+  .page{max-width:900px;margin:0 auto;padding:100px 2rem 5rem}
+
+  .tag{font-size:11px;padding:3px 10px;border-radius:100px;border:1px solid var(--border);color:var(--muted)}
+  .tag.ai{border-color:rgba(99,102,241,.4);color:var(--accent2);background:rgba(99,102,241,.08)}
+
+  .hero-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;flex-wrap:wrap}
+  h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:1rem}
+  h1 span{color:var(--accent2)}
+  .hero-desc{font-size:1.05rem;color:var(--muted);max-width:620px;margin-bottom:2.5rem}
+
+  .meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:3rem}
+  .meta-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem}
+  .meta-label{font-size:12px;color:var(--muted);margin-bottom:.25rem}
+  .meta-value{font-size:15px;font-weight:600}
+
+  .gallery-title{font-size:13px;color:var(--accent2);font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.25rem}
+  .gallery{display:flex;flex-direction:column;gap:1.25rem;margin-bottom:3rem}
+  .gallery-item{border-radius:12px;border:1px solid var(--border);overflow:hidden}
+  .gallery-item img{width:100%;height:auto;display:block}
+
+  /* CTA */
+  .cta{text-align:center;padding:2.5rem;background:var(--card);border:1px solid var(--border);border-radius:16px}
+  .cta p{color:var(--muted);margin-bottom:1.5rem;font-size:15px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;border-radius:8px;font-size:16px;font-weight:500;background:var(--accent);color:#fff;transition:all .2s;cursor:pointer;border:none}
+  .btn:hover{background:var(--accent2);transform:translateY(-2px)}
+
+  /* QR MODAL */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:200;align-items:center;justify-content:center}
+  .modal-overlay.active{display:flex}
+  .modal{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;text-align:center;max-width:320px;width:90%;position:relative}
+  .modal-close{position:absolute;top:1rem;right:1.25rem;font-size:20px;color:var(--muted);cursor:pointer;background:none;border:none;line-height:1}
+  .modal-close:hover{color:var(--text)}
+  .modal h3{font-size:18px;font-weight:600;margin-bottom:.5rem}
+  .modal p{font-size:13px;color:var(--muted);margin-bottom:1.5rem}
+  .qr-box{width:200px;height:200px;margin:0 auto;border-radius:12px;overflow:hidden;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
+  .qr-box img{width:100%;height:100%;object-fit:contain}
+  .qr-placeholder{display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.4}
+  .qr-placeholder span{font-size:2.5rem}
+  .qr-placeholder p{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="back-btn" href="../index.html">← 返回作品集</a>
+    <span class="nav-logo">常宇龙</span>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="hero-meta">
+    <span class="tag ai">小程序</span>
+    <span class="tag">C 端</span>
+    <span class="tag">社交工具</span>
+    <span class="tag">2026</span>
+  </div>
+  <h1>社交<span>日历</span></h1>
+  <p class="hero-desc">以日历为载体的社交产品，帮助用户记录与朋友的共同时光，重新发现身边的连接。</p>
+
+  <div class="meta-grid">
+    <div class="meta-item"><div class="meta-label">项目周期</div><div class="meta-value">2026.03 – 至今</div></div>
+    <div class="meta-item"><div class="meta-label">我的角色</div><div class="meta-value">产品负责人</div></div>
+    <div class="meta-item"><div class="meta-label">平台</div><div class="meta-value">微信小程序</div></div>
+    <div class="meta-item"><div class="meta-label">阶段</div><div class="meta-value">设计中</div></div>
+  </div>
+
+  <div class="gallery-title">产品截图</div>
+  <div class="gallery">
+    <div class="gallery-item"><img src="../images/社交日历 · 原型 v0.5.png" alt="原型 v0.5"></div>
+    <div class="gallery-item"><img src="../images/设计稿 · 所有页面 · 社交日历.png" alt="所有页面设计稿"></div>
+    <div class="gallery-item"><img src="../images/首页设计 3 版对比 · 社交日历.png" alt="首页设计对比"></div>
+    <div class="gallery-item"><img src="../images/风格 1 · 编辑式优雅 · 社交日历.png" alt="风格 1 编辑式优雅"></div>
+    <div class="gallery-item"><img src="../images/风格 2 · 大胆糖果 · 社交日历.png" alt="风格 2 大胆糖果"></div>
+    <div class="gallery-item"><img src="../images/风格 3 · 暗黑技术 · 社交日历.png" alt="风格 3 暗黑技术"></div>
+  </div>
+
+  <div class="cta">
+    <p>扫码体验小程序</p>
+    <button class="btn" onclick="document.getElementById('qrModal').classList.add('active')">📱 立即体验</button>
+  </div>
+
+</div>
+
+<!-- QR CODE MODAL -->
+<div class="modal-overlay" id="qrModal" onclick="if(event.target===this)this.classList.remove('active')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('qrModal').classList.remove('active')">✕</button>
+    <h3>扫码体验</h3>
+    <p>微信扫描下方二维码<br>即可体验社交日历小程序</p>
+    <div class="qr-box">
+      <!-- 替换为真实二维码：<img src="../images/social-calendar-qr.png" alt="小程序二维码"> -->
+      <div class="qr-placeholder">
+        <span>📱</span>
+        <p>二维码待添加</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
